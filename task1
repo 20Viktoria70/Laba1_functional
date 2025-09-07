@@ -1,0 +1,5 @@
+def double_even(lst):
+    return [x * 2 if x % 2 == 0 else x for x in lst]
+
+# Example
+print(double_even([1, 2, 3, 4]))  # [1, 4, 3, 8]
