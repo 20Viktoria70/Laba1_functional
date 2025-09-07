@@ -1,0 +1,7 @@
+def my_length(lst):
+    if not lst:
+        return 0
+    return 1 + my_length(lst[1:])
+
+# Example
+print(my_length([1, 2, 3, 4]))  # 4
