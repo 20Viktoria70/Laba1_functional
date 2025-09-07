@@ -1,0 +1,8 @@
+def my_maximum(lst):
+    if len(lst) == 1:
+        return lst[0]
+    max_rest = my_maximum(lst[1:])
+    return lst[0] if lst[0] > max_rest else max_rest
+
+# Example
+print(my_maximum([3, 7, 2, 9, 4]))  # 9
