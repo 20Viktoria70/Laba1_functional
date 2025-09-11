@@ -10,5 +10,5 @@ def abs_list(lst):
 
     return [abs(x) for x in lst]
 
-# приклад роботи
+# приклад роботи програми
 print(abs_list([-3, 5, -7])) 
