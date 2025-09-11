@@ -12,5 +12,5 @@ def sum_odd(lst):
     
     return sum(x for x in lst if x % 2 != 0)
 
-# приклад
+# приклад роботи програми
 print(sum_odd([1, 2, 3, 4, 5])) 
