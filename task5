@@ -8,5 +8,5 @@ def my_reverse(lst):
         # рекурсія + додавання першого елемента в кінець
     return my_reverse(lst[1:]) + [lst[0]]  
 
-# приклад
+# приклад роботи програми
 print(my_reverse([1, 2, 3]))
