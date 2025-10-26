@@ -1,15 +1,16 @@
 # Завдання 6. Максимум списку
 # Реалізувати функцію myMaximum, яка знаходить найбільший елемент у списку (без використання maximum). Приклад: myMaximum [3,7,2,9,4] == 9
 
-def my_maximum(lst):
-    if len(lst) == 1:   # список з 1 елемента
-        return lst[0]
-        
-        # рекурсивно шукаємо максимум в решті списку
-    max_rest = my_maximum(lst[1:])   
-    
-    # порівнюємо перший елемент з максимумом решти
-    return lst[0] if lst[0] > max_rest else max_rest  
+myMaximum :: (Ord a) => [a] -> a
+myMaximum [] = error "Список порожній!"
+myMaximum [x] = x
+myMaximum (x:xs) = let maxTail = myMaximum xs
+                    in if x > maxTail then x else maxTail
 
-# приклад роботи програми
-print(my_maximum([3, 7, 2, 9, 4]))  
+main :: IO ()
+main = do
+    putStrLn "Введіть числа через пробіл:"
+    input <- getLine
+    let nums = map read (words input) :: [Int]
+    let maxValue = myMaximum nums
+    putStrLn ("Максимальний елемент списку: " ++ show maxValue)
