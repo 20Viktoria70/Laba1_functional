@@ -1,14 +1,13 @@
 #Завдання 3. Абсолютні значення
 # Написати функцію absList, яка переводить усі числа у списку до їх абсолютних значень. Приклад: absList [-3, 5, -7] == [3,5,7]
 
-# функція, яка приймає список чисел
-def abs_list(lst):
+absList :: [Int] -> [Int]
+absList xs = [ abs x | x <- xs ]
 
-    # створюю новий список через list comprehension
-    # для кожного елемента x зі списку lst викликаємо вбудовану функцію abs(x)
-    # abs(x) повертає абсолютне значення числа
-
-    return [abs(x) for x in lst]
-
-# приклад роботи програми
-print(abs_list([-3, 5, -7])) 
+main :: IO ()
+main = do
+    putStrLn "Введіть числа через пробіл:"
+    input <- getLine
+    let nums = map read (words input) :: [Int]
+    let result = absList nums
+    putStrLn ("Список абсолютних значень: " ++ show result)
