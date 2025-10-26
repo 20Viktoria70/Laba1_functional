@@ -1,15 +1,13 @@
 # Завдання 1. Подвоєння парних чисел
 # Написати функцію doubleEven, яка для списку цілих чисел подвоює тільки парні числа, залишаючи непарні без змін. Приклад:doubleEven [1,2,3,4] == [1,4,3,8]
 
-# функція, яка приймає список чисел
-def double_even(lst):
+doubleEven :: [Int] -> [Int]
+doubleEven xs = [ if x `mod` 2 == 0 then x * 2 else x | x <- xs ]
 
-    #створюю новий список за допомогою list comprehension
-    #перебираємо кожен елемент x зі списку lst
-    # якщо x парне (x % 2 == 0), беремо x*2
-    # інакше (x непарне) залишаємо x без змін
-
-    return [x * 2 if x % 2 == 0 else x for x in lst]
-
-# приклад роботи програми
-print(double_even([1, 2, 3, 4]))
+main :: IO ()
+main = do
+    putStrLn "Введіть числа через пробіл:"
+    input <- getLine
+    let nums = map read (words input) :: [Int]
+    let result = doubleEven nums
+    putStrLn ("Результат подвоєння парних чисел: " ++ show result)
