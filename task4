@@ -1,15 +1,14 @@
 # Завдання 4. Рекурсивна довжина списку
 # Реалізувати функцію myLength, яка рахує довжину списку без використання вбудованої функції length. Приклад: myLength [1,2,3,4] == 4
 
-def my_length(lst):
-    
-    # якщо список порожній → довжина = 0
-    if not lst:
-        return 0
-        
-    # Рекурсія: 1 (поточний елемент) + довжина решти списку
-    
-    return 1 + my_length(lst[1:])
+myLength :: [a] -> Int
+myLength [] = 0
+myLength (_:xs) = 1 + myLength xs
 
-# приклад роботи програми
-print(my_length([1, 2, 3, 4]))
+main :: IO ()
+main = do
+    putStrLn "Введіть числа через пробіл:"
+    input <- getLine
+    let nums = map read (words input) :: [Int]
+    let len = myLength nums
+    putStrLn ("Довжина списку: " ++ show len)
