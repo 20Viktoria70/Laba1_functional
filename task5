@@ -1,12 +1,14 @@
 # Завдання 5. Рекурсивне перевертання списку
 # Реалізувати функцію myReverse, яка рекурсивно перевертає список. Приклад: myReverse [1,2,3] == [3,2,1]
 
-def my_reverse(lst):
-    if not lst:      # порожній список
-        return []
-        
-        # рекурсія + додавання першого елемента в кінець
-    return my_reverse(lst[1:]) + [lst[0]]  
+myReverse :: [a] -> [a]
+myReverse [] = []
+myReverse (x:xs) = myReverse xs ++ [x]
 
-# приклад роботи програми
-print(my_reverse([1, 2, 3]))
+main :: IO ()
+main = do
+    putStrLn "Введіть числа через пробіл:"
+    input <- getLine
+    let nums = map read (words input) :: [Int]
+    let reversed = myReverse nums
+    putStrLn ("Перевернутий список: " ++ show reversed)
